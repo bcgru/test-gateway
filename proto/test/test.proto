@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option go_package = "github.com/wdev74/test-gateway";
+
+package test;
+
+import "google/api/annotations.proto";
+
+service Api {
+  rpc GetTest (GetRequestTest) returns (ResponseTest) {
+    option (google.api.http) = {
+      get: "/v2/test/get-test",
+    };
+  }
+}
+message GetRequestTest {
+  string text = 1; // Request: Hello
+}
+message ResponseTest {
+  string result = 1; // Response World
+}
